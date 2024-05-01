@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edytuj handlowca</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>Edytuj handlowca</h1>
+    <!-- Formularz edycji użytkownika -->
+    <form action="/salesmen/add" method="post">
+        <input type="hidden" th:value="${salesman.id}" name="id"> <!-- Pole ukryte z identyfikatorem użytkownika -->
+        <div class="form-group">
+            <label for="name">Imię: </label>
+            <input type="text" class="form-control" id="name" name="name" th:value="${salesman.name}">
+        </div>
+        <div class="form-group">
+            <label for="surname">Nazwisko:  </label>
+            <input type="text" class="form-control" id="surname" name="surname" th:value="${salesman.surname}">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" th:value="${salesman.password}">
+        </div>
+        <div class="form-group">
+            <label for="email">Adres mailowy:  </label>
+            <input type="text" class="form-control" id="email" name="email" th:value="${salesman.email}">
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+</body>
+</html>

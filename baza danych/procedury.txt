@@ -1,0 +1,45 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `af48`(IN buildingRequirementsID INT)
+BEGIN
+
+DECLARE insulationTypeMultiplier double;
+DECLARE buildingTypeMultiplier double;
+
+DECLARE af48 double;
+DECLARE af49 double;
+declare ah51 int;
+declare aj51 double;
+
+DECLARE lost2 double;
+DECLARE lost3 double;
+
+
+SELECT multiplier INTO insulationTypeMultiplier
+    FROM insulation_type
+    WHERE insulationType = (
+        SELECT insulation_type
+        FROM building_requirements
+        WHERE id = buildingRequirementsID
+    );
+    
+    SELECT multiplier2 INTO buildingTypeMultiplier
+    FROM buildingtype
+    WHERE buildingType = (
+        SELECT building_type
+        FROM building_requirements
+        WHERE id = buildingRequirementsID
+    );
+    
+
+    
+    
+SET
+af48 = 1 / ((roof_insulation_thickness / 100) / insulationTypeMultiplier,
+ah51 = round (building_dimensions_sum / (0.5 * (building_dimensionsx * 2 + building_dimensionsy * 2) - (wall_thickness + wall_insulation_thickness) / 100 * 4)), 1),
+aj51 = IF(basement_present = '1', 
+IF(floor_insulation_thickness = '0', 2, 
+
+
+lost2 = building_dimensions_sum * buildingTypeMultiplier * af48 * (room_heating_temperature - location_temperature)),
+lost3 = 1.45 * ((room_heating_temperature - 7.6)/ (room_heating_temperature - location_temperature)) * building_dimensions_sum * (building_dimensions_sum/(0.5*(building_dimensionsx * 2 + building_dimnesionsy * 2)))* AJ51 * 1.9
+
+END
